@@ -1,0 +1,20 @@
+README AFTER INSTALL
+----------------------------------
+Despues de Instalar el paquete de openerp se deben seguir estos pasos:
+
+1.- Iniciar Postgresql
+    service postgresql initdb
+    service postgresql start
+2.- Configurar Postgresql
+2.1- En el archivo /var/lib/pgsql/data/postgresql.conf
+     agregar y/o editar la siguiente linea:
+	listen_addresses = '*'
+2.2- En el archivo /var/lib/pgsql/data/pg_hba.conf
+     Buscar la Linea
+	host all all ::1/128 ident
+     agregar abajo la siguiente linea:
+	host all all 0.0.0.0/0 md5
+3.- Agregar usuario para openerp en la Base de Datos
+    su - postgres -c "createuser --pwprompt --createdb --no-createrole --no-superuser openerp"
+4.- Iniciar OpenERP Server
+    service openerp start
