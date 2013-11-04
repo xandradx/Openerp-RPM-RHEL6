@@ -17,3 +17,5 @@ unmangled_version
 and 
 
 daterelease
+
+from spec file
